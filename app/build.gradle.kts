@@ -69,4 +69,6 @@ dependencies {
 
     debugImplementation(DebugDependencies.ANDROIDX_UI_TOOLING)
     debugImplementation(DebugDependencies.ANDROIDX_UI_TEST_MANIFEST)
+
+    implementation(Dependencies.NAVIGATION_COMPOSE)
 }
