@@ -8,6 +8,10 @@ object Dependencies {
     const val ANDROIDX_UI_TOOLING_PREVIEW = "androidx.compose.ui:ui-tooling-preview"
     const val ANDROIDX_MATERIAL3 = "androidx.compose.material3:material3"
     const val NAVIGATION_COMPOSE = "androidx.navigation:navigation-compose:${DependenciesVersions.NAVIGATION_COMPOSE}"
+    const val ROOM_RUNTIME = "androidx.room:room-runtime:${DependenciesVersions.ROOM}"
+    const val ROOM_KTX = "androidx.room:room-ktx:${DependenciesVersions.ROOM}"
+    const val ROOM_COMPILER = "androidx.room:room-compiler:${DependenciesVersions.ROOM}"
+    const val GSON = "com.google.code.gson:gson:${DependenciesVersions.GSON}"
 }
 
 

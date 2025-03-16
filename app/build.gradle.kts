@@ -2,6 +2,7 @@ plugins {
     id(BuildPlugins.ANDROID_APPLICATION) version PluginVersions.AGP
     id(BuildPlugins.KOTLIN_ANDROID) version PluginVersions.KOTLIN
     id(BuildPlugins.COMPOSE_COMPILER) version PluginVersions.COMPOSE_COMPILER
+    id(BuildPlugins.KOTLIN_KSP) version PluginVersions.KSP
 }
 
 android {
@@ -71,4 +72,10 @@ dependencies {
     debugImplementation(DebugDependencies.ANDROIDX_UI_TEST_MANIFEST)
 
     implementation(Dependencies.NAVIGATION_COMPOSE)
+
+    implementation(Dependencies.ROOM_RUNTIME)
+    implementation(Dependencies.ROOM_KTX)
+    ksp(Dependencies.ROOM_COMPILER)
+
+    implementation(Dependencies.GSON)
 }

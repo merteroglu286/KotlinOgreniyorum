@@ -7,4 +7,6 @@ object DependenciesVersions {
     const val JUNIT_VERSION = "1.2.1"
     const val ESPRESSO_CORE = "3.5.1"
     const val NAVIGATION_COMPOSE = "2.8.9"
+    const val ROOM = "2.6.1"
+    const val GSON = "2.12.1"
 }
