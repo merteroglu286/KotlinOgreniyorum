@@ -14,5 +14,5 @@ interface ModuleDao {
     suspend fun addModules(modules: List<Module>)
 
     @Query("DELETE FROM module_table")
-    suspend fun deleteAllModules(modules: List<Module>)
+    suspend fun deleteAllModules()
 }

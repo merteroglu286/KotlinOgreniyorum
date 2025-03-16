@@ -12,6 +12,7 @@ object Dependencies {
     const val ROOM_KTX = "androidx.room:room-ktx:${DependenciesVersions.ROOM}"
     const val ROOM_COMPILER = "androidx.room:room-compiler:${DependenciesVersions.ROOM}"
     const val GSON = "com.google.code.gson:gson:${DependenciesVersions.GSON}"
+    const val KOIN = "io.insert-koin:koin-android:${DependenciesVersions.KOIN}"
 }
 
 

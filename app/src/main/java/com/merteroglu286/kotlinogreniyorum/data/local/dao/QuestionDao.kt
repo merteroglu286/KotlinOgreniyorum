@@ -14,5 +14,5 @@ interface QuestionDao {
     suspend fun addQuestions(questions: List<Question>)
 
     @Query("DELETE FROM question_table")
-    suspend fun deleteAllQuestions(questions: List<Question>)
+    suspend fun deleteAllQuestions()
 }

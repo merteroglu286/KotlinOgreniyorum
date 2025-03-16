@@ -14,5 +14,5 @@ interface TopicDao {
     suspend fun addTopics(topics: List<Topic>)
 
     @Query("DELETE FROM topic_table")
-    suspend fun deleteAllTopics(topics: List<Topic>)
+    suspend fun deleteAllTopics()
 }

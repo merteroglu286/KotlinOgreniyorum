@@ -9,4 +9,5 @@ object DependenciesVersions {
     const val NAVIGATION_COMPOSE = "2.8.9"
     const val ROOM = "2.6.1"
     const val GSON = "2.12.1"
+    const val KOIN = "4.0.2"
 }

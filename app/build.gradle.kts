@@ -78,4 +78,6 @@ dependencies {
     ksp(Dependencies.ROOM_COMPILER)
 
     implementation(Dependencies.GSON)
+
+    implementation(Dependencies.KOIN)
 }
