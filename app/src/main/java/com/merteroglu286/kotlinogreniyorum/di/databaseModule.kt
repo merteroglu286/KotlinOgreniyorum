@@ -2,15 +2,16 @@ package com.merteroglu286.kotlinogreniyorum.di
 
 import androidx.room.Room
 import com.merteroglu286.kotlinogreniyorum.data.local.AppDatabase
+import com.merteroglu286.kotlinogreniyorum.utility.Constants.APP_DATABASE
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
-val appModule = module {
+val databaseModule = module {
     single {
         Room.databaseBuilder(
             androidContext(),
             AppDatabase::class.java,
-            "app_database"
+            APP_DATABASE
         )
     }
 }

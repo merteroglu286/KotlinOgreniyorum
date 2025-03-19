@@ -80,4 +80,6 @@ dependencies {
     implementation(Dependencies.GSON)
 
     implementation(Dependencies.KOIN)
+
+    implementation("mx.platacard:compose-pager-indicator:0.0.8")
 }

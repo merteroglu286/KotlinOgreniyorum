@@ -17,47 +17,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.merteroglu286.kotlinogreniyorum.navigation.SetupNavGraph
+import com.merteroglu286.kotlinogreniyorum.presentation.screen.splash.SplashScreen
 import com.merteroglu286.kotlinogreniyorum.ui.theme.KotlinOgreniyorumTheme
 
 class MainActivity : ComponentActivity() {
 
-    private lateinit var navController: NavHostController
+    private lateinit var navHostController: NavHostController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             KotlinOgreniyorumTheme {
-                navController = rememberNavController()
-                SetupNavGraph(navController = navController)
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        "kotlin ogreniyorum",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                navHostController = rememberNavController()
+                SetupNavGraph(navHostController = navHostController)
+
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ){
-        Text(
-            text = name,
-            textAlign = TextAlign.Center
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    KotlinOgreniyorumTheme {
-        Greeting("Android")
     }
 }
