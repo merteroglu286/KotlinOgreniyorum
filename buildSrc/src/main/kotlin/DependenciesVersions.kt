@@ -10,4 +10,6 @@ object DependenciesVersions {
     const val ROOM = "2.6.1"
     const val GSON = "2.12.1"
     const val KOIN = "4.0.2"
+    const val INDICATOR = "0.0.8"
+    const val DATASTORE = "1.1.3"
 }

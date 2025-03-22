@@ -2,4 +2,9 @@
     <string name="app_name">Kotlin Ogreniyorum</string>
     <string name="on_boarding_image">Onboarding Image</string>
     <string name="finish">Bitir</string>
+    <string name="good_morning">Günaydın! ☀️</string>
+    <string name="good_day">İyi günler! 🌤</string>
+    <string name="good_evening">İyi akşamlar! 🌙</string>
+    <string name="good_night">İyi geceler! 🌙</string>
+    <string name="your_progress">İlerlemen: </string>
 </resources>

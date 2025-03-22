@@ -31,7 +31,6 @@ class MainActivity : ComponentActivity() {
             KotlinOgreniyorumTheme {
                 navHostController = rememberNavController()
                 SetupNavGraph(navHostController = navHostController)
-
             }
         }
     }

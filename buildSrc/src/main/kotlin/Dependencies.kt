@@ -13,6 +13,9 @@ object Dependencies {
     const val ROOM_COMPILER = "androidx.room:room-compiler:${DependenciesVersions.ROOM}"
     const val GSON = "com.google.code.gson:gson:${DependenciesVersions.GSON}"
     const val KOIN = "io.insert-koin:koin-android:${DependenciesVersions.KOIN}"
+    const val KOIN_COMPOSE = "io.insert-koin:koin-androidx-compose:${DependenciesVersions.KOIN}"
+    const val INDICATOR = "mx.platacard:compose-pager-indicator:${DependenciesVersions.INDICATOR}"
+    const val DATASTORE = "androidx.datastore:datastore-preferences:${DependenciesVersions.DATASTORE}"
 }
 
 

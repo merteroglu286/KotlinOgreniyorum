@@ -3,6 +3,7 @@ plugins {
     id(BuildPlugins.KOTLIN_ANDROID) version PluginVersions.KOTLIN
     id(BuildPlugins.COMPOSE_COMPILER) version PluginVersions.COMPOSE_COMPILER
     id(BuildPlugins.KOTLIN_KSP) version PluginVersions.KSP
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.1.10"
 }
 
 android {
@@ -80,6 +81,16 @@ dependencies {
     implementation(Dependencies.GSON)
 
     implementation(Dependencies.KOIN)
+    implementation(Dependencies.KOIN_COMPOSE)
 
-    implementation("mx.platacard:compose-pager-indicator:0.0.8")
+    implementation(Dependencies.INDICATOR)
+
+    implementation(Dependencies.DATASTORE)
+
+    val ktorVersion = "3.1.1"
+    implementation("io.ktor:ktor-client-core:$ktorVersion")
+    implementation("io.ktor:ktor-client-android:$ktorVersion")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+    implementation("io.ktor:ktor-client-logging:$ktorVersion")
 }
