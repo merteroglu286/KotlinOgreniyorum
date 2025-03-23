@@ -104,3 +104,11 @@ val ColorScheme.defaultTextColor: Color
 val ColorScheme.DividerColor: Color
     @Composable
     get() = if (isSystemInDarkTheme()) DarkGray else LightGray
+
+val ColorScheme.ActiveSegmentedIndicatorColor: Color
+    @Composable
+    get() = if (isSystemInDarkTheme()) Orange else Brown
+
+val ColorScheme.InactiveSegmentedIndicatorColor: Color
+    @Composable
+    get() = if (isSystemInDarkTheme()) Orange.copy(0.3f) else Brown.copy(0.3f)

@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavHostController
 import com.merteroglu286.kotlinogreniyorum.domain.model.Module
+import com.merteroglu286.kotlinogreniyorum.navigation.Screen
 import com.merteroglu286.kotlinogreniyorum.ui.theme.MEDIUM_PADDING
 import com.merteroglu286.kotlinogreniyorum.ui.theme.screenBackgroundColor
 import org.koin.androidx.compose.koinViewModel
@@ -39,7 +40,6 @@ fun HomeScreen(
     val state by viewModel.moduleListState.collectAsState()
     val lazyListState = rememberLazyListState()
 
-    // Scroll konumuna göre compact modu göster/gizle
     val isCompact by remember {
         derivedStateOf {
             lazyListState.firstVisibleItemIndex > 0 || lazyListState.firstVisibleItemScrollOffset > 50
@@ -90,29 +90,23 @@ fun HomeScreen(
             .windowInsetsPadding(WindowInsets.systemBars)
             .padding(MEDIUM_PADDING)
     ) {
-        // Sticky Header (her zaman gösterilen bölüm)
         Surface(
             modifier = Modifier
                 .fillMaxWidth()
                 .zIndex(1f),
             color = MaterialTheme.colorScheme.screenBackgroundColor
         ) {
-            // Birleştirilmiş ve animasyonlu GreetingSection
             GreetingSection(
                 progress = 0.7f,
                 isCompact = isCompact
             )
         }
 
-        // Scrollable content
         ModuleList(
             modules = fakeModuleList,
             state = lazyListState,
             isCompact = isCompact,
-            onModuleClick = { moduleId ->
-                // Burada seçilen modüle göre navigasyon işlemi yapabilirsiniz
-                // Örnek: navHostController.navigate("module_detail/$moduleId")
-            }
+            navHostController = navHostController
         )
     }
 }
@@ -122,18 +116,20 @@ fun ModuleList(
     modules: List<Module>,
     state: LazyListState,
     isCompact: Boolean,
-    onModuleClick: (Int) -> Unit
+    navHostController: NavHostController
 ) {
     LazyColumn(
         state = state,
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = if (isCompact) 64.dp else 124.dp) // Dinamik padding
+            .padding(top = if (isCompact) 64.dp else 124.dp)
     ) {
         items(modules) { module ->
             ExpandableCard(
                 module = module,
-                onContentClick = { },
+                onContentClick = {
+                    navHostController.navigate(Screen.Topic.route)
+                },
                 onQuestionClick = { },
                 isFirstCard = fakeModuleList.indexOf(module) == 0
             )

@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import com.merteroglu286.kotlinogreniyorum.presentation.screen.home.HomeScreen
 import com.merteroglu286.kotlinogreniyorum.presentation.screen.splash.SplashScreen
 import com.merteroglu286.kotlinogreniyorum.presentation.screen.onboarding.OnBoardingScreen
+import com.merteroglu286.kotlinogreniyorum.presentation.screen.topic.TopicScreen
 
 @Composable
 fun SetupNavGraph(navHostController: NavHostController
@@ -23,6 +24,9 @@ fun SetupNavGraph(navHostController: NavHostController
         }
         composable(route = Screen.Home.route) {
             HomeScreen(navHostController)
+        }
+        composable(route = Screen.Topic.route) {
+            TopicScreen(navHostController)
         }
     }
 }
