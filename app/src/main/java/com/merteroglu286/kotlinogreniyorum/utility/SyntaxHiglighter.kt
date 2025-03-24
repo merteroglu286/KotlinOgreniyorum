@@ -1,14 +1,16 @@
 package com.merteroglu286.kotlinogreniyorum.utility
 
-import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
-import com.merteroglu286.kotlinogreniyorum.ui.theme.Orange
+import com.merteroglu286.kotlinogreniyorum.ui.theme.syntaxHighlighterColor
 
 object SyntaxHighlighter {
 
+    @Composable
     fun highlightKeywords(text: String): AnnotatedString {
         val keywords = listOf("val", "var", "fun", "private", "class", "return", "if", "else", "for", "while", "when")
 
@@ -16,7 +18,7 @@ object SyntaxHighlighter {
             val words = text.split(" ")
             for (word in words) {
                 if (keywords.contains(word)) {
-                    withStyle(style = SpanStyle(color = Color(0xFFFF9800))) {
+                    withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.syntaxHighlighterColor)) {
                         append("$word ")
                     }
                 } else {

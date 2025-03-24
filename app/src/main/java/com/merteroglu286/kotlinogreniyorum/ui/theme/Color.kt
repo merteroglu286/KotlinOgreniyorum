@@ -21,9 +21,13 @@ val DarkPaleSage = Color(0xFFC5CDC8)
 val DarkMintGreen = Color(0xFFA1B5AD)
 val DarkSilverGreen = Color(0xFF5E7A6F)
 
-val PrimaryGray = Color(0xFF757575)
-val LightGray = Color(0xFFE0E0E0)
+val LightGray = Color(0xFF969696)
 val DarkGray = Color(0xFF424242)
+
+val PrimaryGray = Color(0xFF424242)
+val SecondaryGray = Color(0xFF646464)
+val PrimaryLightGray = Color(0xFFB4B4B4)
+val SecondaryLightGray = Color(0xFFA0A0A0)
 
 val Black = Color(0xFF000000)
 val White = Color(0xFFFFFFFF)
@@ -62,6 +66,10 @@ val ColorScheme.buttonColor: Color
     @Composable
     get() = if (isSystemInDarkTheme()) TealForest else DarkSilverGreen
 
+val ColorScheme.outlinedButtonColor: Color
+    @Composable
+    get() = if (isSystemInDarkTheme()) TealForest else DarkSilverGreen
+
 val ColorScheme.buttonTextColor: Color
     get() = IvoryWhite
 
@@ -97,9 +105,17 @@ val ColorScheme.ProgressIndicatorTrackColor: Color
     @Composable
     get() = if (isSystemInDarkTheme()) Orange.copy(0.7f) else Brown.copy(0.7f)
 
-val ColorScheme.defaultTextColor: Color
+val ColorScheme.primaryTextColor: Color
     @Composable
     get() = if (isSystemInDarkTheme()) White else Black
+
+val ColorScheme.secondTextColor: Color
+    @Composable
+    get() = if (isSystemInDarkTheme()) PrimaryLightGray else PrimaryGray
+
+val ColorScheme.thirdTextColor: Color
+    @Composable
+    get() = if (isSystemInDarkTheme()) SecondaryLightGray else SecondaryGray
 
 val ColorScheme.DividerColor: Color
     @Composable
@@ -112,3 +128,7 @@ val ColorScheme.ActiveSegmentedIndicatorColor: Color
 val ColorScheme.InactiveSegmentedIndicatorColor: Color
     @Composable
     get() = if (isSystemInDarkTheme()) Orange.copy(0.3f) else Brown.copy(0.3f)
+
+val ColorScheme.syntaxHighlighterColor: Color
+    @Composable
+    get() = if (isSystemInDarkTheme()) Color(0xFFFF9800) else Color(0xFF3F51B5)

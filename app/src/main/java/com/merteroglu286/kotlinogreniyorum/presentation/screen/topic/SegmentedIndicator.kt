@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.merteroglu286.kotlinogreniyorum.ui.theme.ActiveSegmentedIndicatorColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.InactiveSegmentedIndicatorColor
+import com.merteroglu286.kotlinogreniyorum.ui.theme.screenBackgroundColor
 
 @Composable
 fun SegmentedIndicator(totalSteps: Int, currentStep: Int) {
@@ -51,5 +52,9 @@ fun PreviewSegmentedIndicator() {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun DarkPreviewSegmentedIndicator() {
-    SegmentedIndicator(totalSteps = 5, currentStep = 3)
+    Box(
+        modifier = Modifier.background(MaterialTheme.colorScheme.screenBackgroundColor)
+    ) {
+        SegmentedIndicator(totalSteps = 5, currentStep = 3)
+    }
 }

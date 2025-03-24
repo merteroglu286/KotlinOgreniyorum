@@ -15,7 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.merteroglu286.kotlinogreniyorum.domain.model.Topic
-import com.merteroglu286.kotlinogreniyorum.ui.theme.defaultTextColor
+import com.merteroglu286.kotlinogreniyorum.ui.theme.primaryTextColor
 
 @Composable
 fun TopicScreenContent(
@@ -45,13 +45,12 @@ fun TopicScreenContent(
 
         Text(
             text = currentTopic.title,
-            color = MaterialTheme.colorScheme.defaultTextColor,
+            color = MaterialTheme.colorScheme.primaryTextColor,
             style = MaterialTheme.typography.titleLarge
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // LazyColumn, Column içinde ağırlık belirtilmeden kullanılıyor
         Column(
             modifier = Modifier
                 .fillMaxWidth()

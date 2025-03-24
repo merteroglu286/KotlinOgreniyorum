@@ -33,7 +33,7 @@ import com.merteroglu286.kotlinogreniyorum.ui.theme.HeaderTitleColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.MEDIUM_PADDING
 import com.merteroglu286.kotlinogreniyorum.ui.theme.ProgressIndicatorColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.ProgressIndicatorTrackColor
-import com.merteroglu286.kotlinogreniyorum.ui.theme.defaultTextColor
+import com.merteroglu286.kotlinogreniyorum.ui.theme.primaryTextColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.screenBackgroundColor
 import java.time.LocalTime
 import java.util.Calendar
@@ -98,7 +98,7 @@ fun GreetingSection(
         Text(
             text = "${stringResource(R.string.your_progress)} ${(progress * 100).toInt()}%",
             style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.defaultTextColor
+            color = MaterialTheme.colorScheme.primaryTextColor
         )
 
         Spacer(modifier = Modifier.height(4.dp))
