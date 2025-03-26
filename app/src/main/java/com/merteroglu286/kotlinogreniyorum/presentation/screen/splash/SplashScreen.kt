@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import com.merteroglu286.kotlinogreniyorum.navigation.Screen
+import com.merteroglu286.kotlinogreniyorum.presentation.screen.splash.components.Splash
 import org.koin.androidx.compose.koinViewModel
 
 @Composable

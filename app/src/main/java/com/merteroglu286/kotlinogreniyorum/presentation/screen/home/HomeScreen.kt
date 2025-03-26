@@ -28,6 +28,8 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavHostController
 import com.merteroglu286.kotlinogreniyorum.domain.model.Module
 import com.merteroglu286.kotlinogreniyorum.navigation.Screen
+import com.merteroglu286.kotlinogreniyorum.presentation.screen.home.components.ExpandableCard
+import com.merteroglu286.kotlinogreniyorum.presentation.screen.home.components.GreetingSection
 import com.merteroglu286.kotlinogreniyorum.ui.theme.MEDIUM_PADDING
 import com.merteroglu286.kotlinogreniyorum.ui.theme.screenBackgroundColor
 import org.koin.androidx.compose.koinViewModel
@@ -106,7 +108,12 @@ fun HomeScreen(
             modules = fakeModuleList,
             state = lazyListState,
             isCompact = isCompact,
-            navHostController = navHostController
+            onContentClick = {
+                navHostController.navigate(Screen.Topic.route)
+            },
+            onQuestionClick = {
+                navHostController.navigate(Screen.Question.route)
+            }
         )
     }
 }
@@ -116,7 +123,8 @@ fun ModuleList(
     modules: List<Module>,
     state: LazyListState,
     isCompact: Boolean,
-    navHostController: NavHostController
+    onContentClick: () -> Unit,
+    onQuestionClick: () -> Unit
 ) {
     LazyColumn(
         state = state,
@@ -128,9 +136,11 @@ fun ModuleList(
             ExpandableCard(
                 module = module,
                 onContentClick = {
-                    navHostController.navigate(Screen.Topic.route)
+                   onContentClick()
                 },
-                onQuestionClick = { },
+                onQuestionClick = {
+                    onQuestionClick()
+                },
                 isFirstCard = fakeModuleList.indexOf(module) == 0
             )
             Spacer(modifier = Modifier.height(8.dp))

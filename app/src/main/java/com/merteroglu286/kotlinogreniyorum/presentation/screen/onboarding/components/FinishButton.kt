@@ -1,4 +1,4 @@
-package com.merteroglu286.kotlinogreniyorum.presentation.screen.onboarding
+package com.merteroglu286.kotlinogreniyorum.presentation.screen.onboarding.components
 
 import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility

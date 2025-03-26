@@ -12,4 +12,5 @@ object DependenciesVersions {
     const val KOIN = "4.0.2"
     const val INDICATOR = "0.0.8"
     const val DATASTORE = "1.1.3"
+    const val LOTTIE = "6.6.4"
 }

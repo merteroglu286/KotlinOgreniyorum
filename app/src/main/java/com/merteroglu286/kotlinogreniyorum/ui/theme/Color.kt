@@ -36,6 +36,9 @@ val Brown = Color(0xFF8B5A2B)
 
 val Orange = Color(0xFFFFAB00)
 
+val Red = Color(0xFFE91E1E)
+val Green = Color(0xFF4CAF50)
+
 
 val ColorScheme.screenBackgroundColor: Color
     @Composable
@@ -51,7 +54,7 @@ val ColorScheme.SplashBackgroundColor: Brush
 
 val ColorScheme.SplashTextColor: Color
     @Composable
-    get() = if (isSystemInDarkTheme()) IvoryWhite else DeepMidnight
+    get() = if (isSystemInDarkTheme()) MintGreen else DeepMidnight
 
 
 val ColorScheme.activeIndicatorColor: Color
@@ -132,3 +135,11 @@ val ColorScheme.InactiveSegmentedIndicatorColor: Color
 val ColorScheme.syntaxHighlighterColor: Color
     @Composable
     get() = if (isSystemInDarkTheme()) Color(0xFFFF9800) else Color(0xFF3F51B5)
+
+val ColorScheme.correctAnswerColor: Color
+    @Composable
+    get() = if (isSystemInDarkTheme()) Green.copy(0.3f) else Green.copy(0.7f)
+
+val ColorScheme.wrongAnswerColor: Color
+    @Composable
+    get() = if (isSystemInDarkTheme()) Red.copy(0.3f) else Red.copy(0.7f)

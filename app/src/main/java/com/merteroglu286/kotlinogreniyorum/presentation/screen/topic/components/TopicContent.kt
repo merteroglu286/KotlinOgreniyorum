@@ -1,4 +1,4 @@
-package com.merteroglu286.kotlinogreniyorum.presentation.screen.topic
+package com.merteroglu286.kotlinogreniyorum.presentation.screen.topic.components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.background
@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.merteroglu286.kotlinogreniyorum.domain.model.Topic
-import com.merteroglu286.kotlinogreniyorum.ui.theme.primaryTextColor
+import com.merteroglu286.kotlinogreniyorum.presentation.screen.topic.fakeTopicList
 import com.merteroglu286.kotlinogreniyorum.ui.theme.screenBackgroundColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.secondTextColor
 

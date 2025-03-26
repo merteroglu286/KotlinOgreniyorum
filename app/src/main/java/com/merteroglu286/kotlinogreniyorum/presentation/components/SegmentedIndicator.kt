@@ -1,4 +1,4 @@
-package com.merteroglu286.kotlinogreniyorum.presentation.screen.topic
+package com.merteroglu286.kotlinogreniyorum.presentation.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background

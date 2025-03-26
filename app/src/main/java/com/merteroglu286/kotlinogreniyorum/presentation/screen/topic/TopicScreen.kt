@@ -17,6 +17,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import com.merteroglu286.kotlinogreniyorum.presentation.screen.topic.components.TopicScreenContent
 import com.merteroglu286.kotlinogreniyorum.ui.theme.MEDIUM_PADDING
 import com.merteroglu286.kotlinogreniyorum.ui.theme.screenBackgroundColor
 import org.koin.androidx.compose.koinViewModel

@@ -16,6 +16,7 @@ object Dependencies {
     const val KOIN_COMPOSE = "io.insert-koin:koin-androidx-compose:${DependenciesVersions.KOIN}"
     const val INDICATOR = "mx.platacard:compose-pager-indicator:${DependenciesVersions.INDICATOR}"
     const val DATASTORE = "androidx.datastore:datastore-preferences:${DependenciesVersions.DATASTORE}"
+    const val LOTTIE = "com.airbnb.android:lottie-compose:${DependenciesVersions.LOTTIE}"
 }
 
 

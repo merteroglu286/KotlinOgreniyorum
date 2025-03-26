@@ -1,4 +1,4 @@
-package com.merteroglu286.kotlinogreniyorum.presentation.screen.splash
+package com.merteroglu286.kotlinogreniyorum.presentation.screen.splash.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image

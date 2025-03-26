@@ -1,4 +1,4 @@
-package com.merteroglu286.kotlinogreniyorum.presentation.screen.home
+package com.merteroglu286.kotlinogreniyorum.presentation.screen.home.components
 
 import android.content.res.Configuration
 import android.os.Build

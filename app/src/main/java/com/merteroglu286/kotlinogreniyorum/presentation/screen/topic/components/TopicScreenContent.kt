@@ -1,4 +1,4 @@
-package com.merteroglu286.kotlinogreniyorum.presentation.screen.topic
+package com.merteroglu286.kotlinogreniyorum.presentation.screen.topic.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -15,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.merteroglu286.kotlinogreniyorum.domain.model.Topic
+import com.merteroglu286.kotlinogreniyorum.presentation.components.SegmentedIndicator
 import com.merteroglu286.kotlinogreniyorum.ui.theme.primaryTextColor
 
 @Composable

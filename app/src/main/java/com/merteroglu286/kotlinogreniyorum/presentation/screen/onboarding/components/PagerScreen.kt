@@ -1,4 +1,4 @@
-package com.merteroglu286.kotlinogreniyorum.presentation.screen.onboarding
+package com.merteroglu286.kotlinogreniyorum.presentation.screen.onboarding.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
