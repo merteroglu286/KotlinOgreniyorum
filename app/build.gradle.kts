@@ -35,6 +35,20 @@ android {
 
     }
 
+    signingConfigs {
+        create("release") {
+            val myKeystorePath = localProperties.getProperty("keystore.path") ?: ""
+            val myKeystorePassword = localProperties.getProperty("keystore.password") ?: ""
+            val myKeyAlias = localProperties.getProperty("key.alias") ?: ""
+            val myKeyPassword = localProperties.getProperty("key.password") ?: ""
+
+            storeFile = myKeystorePath.let { if (it.isNotEmpty()) file(it) else null }
+            storePassword = myKeystorePassword
+            keyAlias = myKeyAlias
+            keyPassword = myKeyPassword
+        }
+    }
+
     buildTypes {
         getByName(BuildTypes.RELEASE) {
             proguardFiles(
@@ -44,7 +58,7 @@ android {
             isMinifyEnabled = Build.Release.isMinifyEnabled
             enableUnitTestCoverage = Build.Release.enableUnitTestCoverage
             isDebuggable = Build.Release.isDebuggable
-//            signingConfig = signingConfigs.getByName("release")
+            signingConfig = signingConfigs.getByName("release")
         }
 
         getByName(BuildTypes.DEBUG) {
