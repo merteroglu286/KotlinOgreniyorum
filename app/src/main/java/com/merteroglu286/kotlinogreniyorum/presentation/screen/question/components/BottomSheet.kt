@@ -35,7 +35,8 @@ import com.merteroglu286.kotlinogreniyorum.ui.theme.secondTextColor
 @Composable
 fun BottomSheet(
     onDismiss: () -> Unit,
-    onNextQuestion: () -> Unit
+    onNextQuestion: () -> Unit,
+    isLastQuestion: Boolean
 ) {
     val sheetState = rememberModalBottomSheetState()
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.success))
@@ -67,7 +68,7 @@ fun BottomSheet(
             Spacer(modifier = Modifier.height(MEDIUM_HEIGHT))
 
             Text(
-                text = stringResource(R.string.click_for_next),
+                text = if (isLastQuestion) stringResource(R.string.click_for_finish) else stringResource(R.string.click_for_next),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.secondTextColor
             )
@@ -76,7 +77,7 @@ fun BottomSheet(
 
             Button(
                 onclick = onNextQuestion,
-                text = stringResource(R.string.next)
+                text = if (isLastQuestion) stringResource(R.string.finish) else stringResource(R.string.next)
             )
 
             Spacer(modifier = Modifier.height(MEDIUM_HEIGHT))

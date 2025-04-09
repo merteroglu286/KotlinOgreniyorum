@@ -64,6 +64,7 @@ fun QuestionScreen(
         }
 
         state.questions.isNotEmpty() -> {
+            val isLastQuestion = currentStep == state.questions.size - 1
 
             fun proceedNextQuestion() {
                 if (currentStep < state.questions.size - 1) {
@@ -79,6 +80,7 @@ fun QuestionScreen(
                 SuccessDialog(
                     onDismissRequest = {},
                     onConfirm = {
+                        showSuccessDialog = false
                         viewModel.saveQuestions()
                         navHostController.popBackStack()
                     },
@@ -150,7 +152,8 @@ fun QuestionScreen(
                         onNextQuestion = {
                             showBottomSheet = false
                             proceedNextQuestion()
-                        }
+                        },
+                        isLastQuestion = isLastQuestion
                     )
                 }
 
@@ -160,7 +163,7 @@ fun QuestionScreen(
                             showNextButton = false
                             proceedNextQuestion()
                         },
-                        text = stringResource(R.string.next)
+                        text = if (isLastQuestion) stringResource(R.string.finish) else stringResource(R.string.next)
                     )
                 }
             }

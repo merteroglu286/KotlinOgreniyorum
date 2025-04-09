@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION) version PluginVersions.AGP
     id(BuildPlugins.KOTLIN_ANDROID) version PluginVersions.KOTLIN
@@ -10,6 +12,12 @@ android {
     namespace = BuildConfig.APP_ID
     compileSdk = BuildConfig.COMPILE_SDK_VERSION
 
+    val localPropertiesFile = project.rootProject.file("local.properties")
+    val localProperties = Properties()
+    localProperties.load(localPropertiesFile.inputStream())
+
+    val baseUrl = localProperties.getProperty("base.url")?.replace("\"", "") ?: ""
+
     defaultConfig {
         applicationId = BuildConfig.APP_ID
         minSdk = BuildConfig.MIN_SDK_VERSION
@@ -21,17 +29,42 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
+        signingConfig = signingConfigs.getByName("debug")
+
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = false
+        getByName(BuildTypes.RELEASE) {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            isMinifyEnabled = Build.Release.isMinifyEnabled
+            enableUnitTestCoverage = Build.Release.enableUnitTestCoverage
+            isDebuggable = Build.Release.isDebuggable
+//            signingConfig = signingConfigs.getByName("release")
         }
+
+        getByName(BuildTypes.DEBUG) {
+            applicationIdSuffix = Build.Debug.applicationIdSuffix
+            versionNameSuffix = Build.Debug.versionNameSuffix
+            isMinifyEnabled = Build.Debug.isMinifyEnabled
+            enableUnitTestCoverage = Build.Debug.enableUnitTestCoverage
+            isDebuggable = Build.Debug.isDebuggable
+        }
+
+        create(BuildTypes.RELEASE_EXTERNAL_QA) {
+            applicationIdSuffix = Build.ReleaseExternalQa.applicationIdSuffix
+            versionNameSuffix = Build.ReleaseExternalQa.versionNameSuffix
+            isMinifyEnabled = Build.ReleaseExternalQa.isMinifyEnabled
+            enableUnitTestCoverage = Build.ReleaseExternalQa.enableUnitTestCoverage
+            isDebuggable = Build.ReleaseExternalQa.isDebuggable
+        }
+
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -41,6 +74,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"

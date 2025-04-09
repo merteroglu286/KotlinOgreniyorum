@@ -27,6 +27,7 @@ import com.merteroglu286.kotlinogreniyorum.ui.theme.screenBackgroundColor
 @Composable
 fun Buttons(
     isLastTopic: Boolean,
+    isFirsTopic: Boolean,
     onResetClick: () -> Unit,
     onNextClick: () -> Unit
 ) {
@@ -34,20 +35,21 @@ fun Buttons(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(SMALL_PADDING)
     ) {
-        OutlinedButton(
-            onClick = onResetClick,
-            modifier = Modifier.weight(1f),
-            border = BorderStroke(
-                width = 1.dp,
-                color = MaterialTheme.colorScheme.outlinedButtonColor
-            ),
-            colors = ButtonDefaults.outlinedButtonColors(
-                contentColor = MaterialTheme.colorScheme.outlinedButtonColor
-            )
-        ) {
-            Text("Başa Dön")
+        if (!isFirsTopic){
+            OutlinedButton(
+                onClick = onResetClick,
+                modifier = Modifier.weight(1f),
+                border = BorderStroke(
+                    width = 1.dp,
+                    color = MaterialTheme.colorScheme.outlinedButtonColor
+                ),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    contentColor = MaterialTheme.colorScheme.outlinedButtonColor
+                )
+            ) {
+                Text("Başa Dön")
+            }
         }
-
         Button(
             onClick = onNextClick,
             modifier = Modifier.weight(1f),
@@ -59,7 +61,7 @@ fun Buttons(
             )
         )
         {
-            Text(if (isLastTopic) stringResource(R.string.complete) else stringResource(R.string.next))
+            Text(if (isLastTopic) stringResource(R.string.finish) else stringResource(R.string.next))
         }
     }
 }
@@ -69,6 +71,7 @@ fun Buttons(
 fun ButtonsPreview() {
     Buttons(
         isLastTopic = false,
+        isFirsTopic = false,
         onResetClick = {},
         onNextClick = {}
     )
@@ -82,6 +85,7 @@ fun ButtonsDarkPreview() {
     ) {
         Buttons(
             isLastTopic = false,
+            isFirsTopic = false,
             onResetClick = {},
             onNextClick = {}
         )

@@ -36,6 +36,7 @@ fun TopicScreenContent(
     visibleContentCount: Int,
     showExamples: Boolean,
     isLastTopic: Boolean,
+    isFirsTopic: Boolean,
     onBackClick: () -> Unit,
     onContentClick: () -> Unit,
     onResetClick: () -> Unit,
@@ -94,6 +95,7 @@ fun TopicScreenContent(
             Spacer(modifier = Modifier.height(MEDIUM_HEIGHT))
             Buttons(
                 isLastTopic = isLastTopic,
+                isFirsTopic = isFirsTopic,
                 onResetClick = onResetClick,
                 onNextClick = onNextClick
             )

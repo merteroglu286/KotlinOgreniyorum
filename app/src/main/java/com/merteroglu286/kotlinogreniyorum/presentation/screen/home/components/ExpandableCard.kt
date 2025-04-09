@@ -29,6 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -42,6 +43,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.merteroglu286.kotlinogreniyorum.R
 import com.merteroglu286.kotlinogreniyorum.domain.model.Module
+import com.merteroglu286.kotlinogreniyorum.presentation.components.ErrorDialog
 import com.merteroglu286.kotlinogreniyorum.ui.theme.DividerColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.LARGE_SIZE
 import com.merteroglu286.kotlinogreniyorum.ui.theme.MEDIUM_PADDING
@@ -89,6 +91,7 @@ fun ExpandableCard(
         hasQuestionBeenCompleted = true
     }
 
+    var showErrorDialog by remember { mutableStateOf(false) }
 
     Card(
         modifier = Modifier
@@ -225,7 +228,11 @@ fun ExpandableCard(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-                                onQuestionClick()
+                                if (isTopicCompleted) {
+                                    onQuestionClick()
+                                } else {
+                                    showErrorDialog = true
+                                }
                             }
                     ) {
                         Row(
@@ -264,5 +271,14 @@ fun ExpandableCard(
                 }
             }
         }
+    }
+
+    if (showErrorDialog) {
+        ErrorDialog(
+            onDismissRequest = { showErrorDialog = false },
+            onConfirm = { showErrorDialog = false },
+            message = stringResource(R.string.please_complete_topics),
+            buttonText = stringResource(R.string.ok)
+        )
     }
 }

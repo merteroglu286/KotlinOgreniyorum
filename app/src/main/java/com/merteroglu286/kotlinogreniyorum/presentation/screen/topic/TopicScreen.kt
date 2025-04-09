@@ -63,6 +63,7 @@ fun TopicScreen(
                     visibleContentCount = visibleContentCount,
                     showExamples = showExamples,
                     isLastTopic = isLastTopic,
+                    isFirsTopic = currentStep == 0,
                     onBackClick = {
                         navHostController.popBackStack()
                     },
@@ -95,6 +96,7 @@ fun TopicScreen(
                 SuccessDialog(
                     onDismissRequest = {},
                     onConfirm = {
+                        showSuccessDialog = false
                         viewModel.saveTopics()
                         navHostController.popBackStack()
                     },

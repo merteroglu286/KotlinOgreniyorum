@@ -77,7 +77,7 @@ fun SuccessDialog(
 
                 Button(
                     onclick = onConfirm,
-                    text = stringResource(R.string.complete)
+                    text = stringResource(R.string.back_home)
                 )
             }
         }

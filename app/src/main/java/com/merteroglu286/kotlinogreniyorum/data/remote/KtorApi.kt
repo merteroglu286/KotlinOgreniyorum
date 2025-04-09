@@ -1,7 +1,7 @@
 package com.merteroglu286.kotlinogreniyorum.data.remote
 
 import android.util.Log
-import com.merteroglu286.kotlinogreniyorum.utility.Constants.BASE_URL
+import com.merteroglu286.kotlinogreniyorum.BuildConfig
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -41,7 +41,7 @@ abstract class KtorApi {
 
     fun HttpRequestBuilder.pathUrl(path: String){
         url {
-            takeFrom(BASE_URL)
+            takeFrom(BuildConfig.BASE_URL)
             path(path)
         }
     }

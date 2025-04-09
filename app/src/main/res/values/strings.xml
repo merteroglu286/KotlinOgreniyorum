@@ -8,7 +8,8 @@
     <string name="good_night">İyi geceler! 🌙</string>
     <string name="your_progress">İlerlemen: </string>
     <string name="congratulations">Tebrikler!</string>
-    <string name="click_for_next">Bir sonraki soruya geçmek için butona tıklayın</string>
+    <string name="click_for_next">Bir sonraki soruya geçmek için butona tıklayın.</string>
+    <string name="click_for_finish">Tüm soruları çözdünüz, bitirmek için tıklayınız.</string>
     <string name="next">Sonraki</string>
     <string name="complete">Tamamla</string>
     <string name="try_again">Tekrar Dene</string>
@@ -21,4 +22,7 @@
     <string name="go">Git</string>
     <string name="question">Soru</string>
     <string name="solve_questions">Soruları çöz.</string>
+    <string name="back_home">Ana sayfaya dön</string>
+    <string name="please_complete_topics">Lütfen önce konuları tamamlayın</string>
+    <string name="ok">Tamam</string>
 </resources>
