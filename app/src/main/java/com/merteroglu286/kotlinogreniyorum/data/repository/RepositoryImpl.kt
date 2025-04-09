@@ -14,4 +14,37 @@ class RepositoryImpl(
     override fun readOnBoardingState(): Flow<Boolean> {
         return dataStore.readOnBoardingState()
     }
+
+    override suspend fun saveModuleCount(count: Int) {
+        dataStore.saveModuleCount(count)
+    }
+
+    override fun readModuleCount(): Flow<Int> {
+        return dataStore.readModuleCount()
+    }
+
+    override suspend fun saveProgress(progress: Float) {
+        dataStore.saveProgress(progress)
+    }
+
+    override fun readProgress(): Flow<Float> {
+        return dataStore.readProgress()
+    }
+
+    override suspend fun saveModuleIdToListForTopic(moduleId: Int) {
+        dataStore.saveModuleIdToListForTopic(moduleId)
+    }
+
+    override fun readModuleIdListForTopic(): Flow<List<Int>> {
+        return dataStore.readModuleIdListForTopic()
+    }
+
+    override suspend fun saveModuleIdToListForQuestion(moduleId: Int) {
+        dataStore.saveModuleIdToListForQuestion(moduleId)
+    }
+
+    override fun readModuleIdListForQuestion(): Flow<List<Int>> {
+        return dataStore.readModuleIdListForQuestion()
+    }
+
 }

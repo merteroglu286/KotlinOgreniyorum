@@ -8,7 +8,7 @@ import com.merteroglu286.kotlinogreniyorum.domain.model.Module
 @Dao
 interface ModuleDao {
     @Query("SELECT * FROM module_table ORDER BY id ASC")
-    fun gelAllModules(): List<Module>
+    suspend fun getAllModules(): List<Module>
 
     @Insert()
     suspend fun addModules(modules: List<Module>)

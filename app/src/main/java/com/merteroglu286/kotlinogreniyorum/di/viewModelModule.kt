@@ -14,6 +14,6 @@ val viewModelModule = module {
     viewModel { SplashViewModel(get()) }
     viewModel { OnBoardingViewModel(get()) }
     viewModel { HomeViewModel(get()) }
-    viewModel { TopicViewModel(get()) }
-    viewModel { QuestionViewModel(get()) }
+    viewModel { TopicViewModel(get(), get()) }
+    viewModel { QuestionViewModel(get(), get()) }
 }

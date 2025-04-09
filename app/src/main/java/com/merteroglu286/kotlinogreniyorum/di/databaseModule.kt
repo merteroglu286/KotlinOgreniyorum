@@ -13,5 +13,20 @@ val databaseModule = module {
             AppDatabase::class.java,
             APP_DATABASE
         )
+            .fallbackToDestructiveMigration() // Geçici çözüm olarak, migration stratejisi
+            .build()
     }
+
+    single {
+        get<AppDatabase>().moduleDao()
+    }
+
+    single {
+        get<AppDatabase>().topicDao()
+    }
+
+    single {
+        get<AppDatabase>().questionDao()
+    }
+
 }

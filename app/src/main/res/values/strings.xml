@@ -10,4 +10,15 @@
     <string name="congratulations">Tebrikler!</string>
     <string name="click_for_next">Bir sonraki soruya geçmek için butona tıklayın</string>
     <string name="next">Sonraki</string>
+    <string name="complete">Tamamla</string>
+    <string name="try_again">Tekrar Dene</string>
+    <string name="back">Geri</string>
+    <string name="turn_back">Geri Dön</string>
+    <string name="you_have_completed_all_modules">Konuları tamamladınız, artık soruları çözmek için hazırsınız.</string>
+    <string name="you_have_completed_all_questions">Soruları başarıyla tamamladınız. Bir sonraki konuya geçebilirsiniz.</string>
+    <string name="info">Bilgi</string>
+    <string name="start_learn">Öğrenmeye başla.</string>
+    <string name="go">Git</string>
+    <string name="question">Soru</string>
+    <string name="solve_questions">Soruları çöz.</string>
 </resources>

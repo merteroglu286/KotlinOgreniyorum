@@ -9,7 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.merteroglu286.kotlinogreniyorum.ui.theme.SMALL_PADDING
 import com.merteroglu286.kotlinogreniyorum.ui.theme.screenBackgroundColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.thirdTextColor
 
@@ -19,7 +19,7 @@ fun ContinueText(text: String) {
         text = text,
         color = MaterialTheme.colorScheme.thirdTextColor,
         style = MaterialTheme.typography.bodySmall,
-        modifier = Modifier.padding(top = 8.dp)
+        modifier = Modifier.padding(top = SMALL_PADDING)
     )
 }
 

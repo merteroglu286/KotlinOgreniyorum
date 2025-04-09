@@ -3,4 +3,5 @@ object BuildPlugins {
     const val ANDROID_APPLICATION = "com.android.application"
     const val COMPOSE_COMPILER = "org.jetbrains.kotlin.plugin.compose"
     const val KOTLIN_KSP = "com.google.devtools.ksp"
+    const val KTOR_SERIALIZATION = "org.jetbrains.kotlin.plugin.serialization"
 }

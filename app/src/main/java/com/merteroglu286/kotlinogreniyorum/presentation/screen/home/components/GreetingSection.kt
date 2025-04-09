@@ -33,6 +33,7 @@ import com.merteroglu286.kotlinogreniyorum.ui.theme.HeaderTitleColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.MEDIUM_PADDING
 import com.merteroglu286.kotlinogreniyorum.ui.theme.ProgressIndicatorColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.ProgressIndicatorTrackColor
+import com.merteroglu286.kotlinogreniyorum.ui.theme.SMALL_HEIGHT
 import com.merteroglu286.kotlinogreniyorum.ui.theme.primaryTextColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.screenBackgroundColor
 import java.time.LocalTime
@@ -91,7 +92,7 @@ fun GreetingSection(
                     color = MaterialTheme.colorScheme.HeaderTitleColor
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(SMALL_HEIGHT))
             }
         }
 

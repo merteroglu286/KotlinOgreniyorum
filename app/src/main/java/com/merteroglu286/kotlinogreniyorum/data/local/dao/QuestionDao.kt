@@ -7,12 +7,12 @@ import com.merteroglu286.kotlinogreniyorum.domain.model.Question
 
 @Dao
 interface QuestionDao {
-    @Query("SELECT * FROM question_table WHERE id=:moduleId")
-    fun getQuestionsByModuleId(moduleId: Int): List<Question>
+    @Query("SELECT * FROM question_table WHERE moduleId=:moduleId")
+    suspend fun getQuestionsByModuleId(moduleId: Int): List<Question>
 
     @Insert()
     suspend fun addQuestions(questions: List<Question>)
 
-    @Query("DELETE FROM question_table")
-    suspend fun deleteAllQuestions()
+    @Query("DELETE FROM question_table WHERE moduleId=:moduleId")
+    suspend fun deleteQuestionsByModuleId(moduleId: Int)
 }

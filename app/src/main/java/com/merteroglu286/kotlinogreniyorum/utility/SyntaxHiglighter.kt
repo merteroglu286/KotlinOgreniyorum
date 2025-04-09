@@ -15,14 +15,41 @@ object SyntaxHighlighter {
         val keywords = listOf("val", "var", "fun", "private", "class", "return", "if", "else", "for", "while", "when")
 
         return buildAnnotatedString {
-            val words = text.split(" ")
-            for (word in words) {
+            var currentWord = StringBuilder()
+            var i = 0
+
+            while (i < text.length) {
+                val char = text[i]
+
+                if (char.isLetterOrDigit() || char == '_') {
+                    currentWord.append(char)
+                } else {
+                    if (currentWord.isNotEmpty()) {
+                        val word = currentWord.toString()
+                        if (keywords.contains(word)) {
+                            withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.syntaxHighlighterColor)) {
+                                append(word)
+                            }
+                        } else {
+                            append(word)
+                        }
+                        currentWord.clear()
+                    }
+
+                    append(char)
+                }
+
+                i++
+            }
+
+            if (currentWord.isNotEmpty()) {
+                val word = currentWord.toString()
                 if (keywords.contains(word)) {
                     withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.syntaxHighlighterColor)) {
-                        append("$word ")
+                        append(word)
                     }
                 } else {
-                    append("$word ")
+                    append(word)
                 }
             }
         }

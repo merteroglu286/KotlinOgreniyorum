@@ -94,7 +94,7 @@ val ColorScheme.cardBackgroundColor: Color
 
 val ColorScheme.expandedCardBackgroundColor: Color
     @Composable
-    get() = if (isSystemInDarkTheme()) Black.copy(alpha = 0.5f) else White.copy(alpha = 0.6f) // Kontrast için küçük bir değişiklik
+    get() = if (isSystemInDarkTheme()) Black.copy(alpha = 0.5f) else White.copy(alpha = 0.6f)
 
 val ColorScheme.HeaderTitleColor: Color
     @Composable
@@ -143,3 +143,11 @@ val ColorScheme.correctAnswerColor: Color
 val ColorScheme.wrongAnswerColor: Color
     @Composable
     get() = if (isSystemInDarkTheme()) Red.copy(0.3f) else Red.copy(0.7f)
+
+val ColorScheme.circularProgressColor: Color
+    @Composable
+    get() = if (isSystemInDarkTheme()) MintGreen else DeepMidnight
+
+val ColorScheme.circularProgressBackgroundColor: Color
+    @Composable
+    get() = if (isSystemInDarkTheme()) White.copy(0.5f) else Black.copy(0.5f)

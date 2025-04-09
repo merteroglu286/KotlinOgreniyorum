@@ -1,6 +1,5 @@
 package com.merteroglu286.kotlinogreniyorum.presentation.screen.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.merteroglu286.kotlinogreniyorum.domain.Resource
@@ -14,30 +13,57 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val useCases: UseCases
-): ViewModel() {
+) : ViewModel() {
 
-    private val _moduleListState = MutableStateFlow<ModuleListState>(ModuleListState())
+    private val _moduleListState =
+        MutableStateFlow<ModuleListState>(ModuleListState(isLoading = true))
     val moduleListState: StateFlow<ModuleListState> = _moduleListState
+
+    private val _progress = MutableStateFlow(0f)
+    val progress: StateFlow<Float> = _progress
+
+    private val _completedTopicList = MutableStateFlow<List<Int>>(emptyList())
+    val completedTopicList: StateFlow<List<Int>> = _completedTopicList
+
+    private val _completedQuestionList = MutableStateFlow<List<Int>>(emptyList())
+    val completedQuestionList: StateFlow<List<Int>> = _completedQuestionList
 
     init {
         loadModules()
+
+        viewModelScope.launch {
+            useCases.readProgressUseCase().collect { _progress.value = it }
+        }
+
+        viewModelScope.launch {
+            useCases.readCompletedTopicsUseCase().collect { list ->
+                _completedTopicList.value = list
+            }
+        }
+
+        viewModelScope.launch {
+            useCases.readCompletedQuestionsUseCase().collect { list ->
+                _completedQuestionList.value = list
+            }
+        }
     }
 
-    private fun loadModules() {
+    fun loadModules() {
         viewModelScope.launch {
             useCases.getModulesUseCase()
                 .onEach { result ->
                     when (result) {
                         is Resource.Loading -> {
-                            Log.d("mertLog", "Loading")
                             _moduleListState.value = ModuleListState(isLoading = true)
                         }
+
                         is Resource.Success -> {
-                            Log.d("mertLog", "Success")
-                            _moduleListState.value = ModuleListState(modules = result.data ?: emptyList())
+                            useCases.saveModuleCountUseCase(result.data?.size ?: 0)
+                            _moduleListState.value =
+                                ModuleListState(modules = result.data ?: emptyList())
                         }
+
                         is Resource.Error -> {
-                            Log.d("mertLog", "Error")
                             _moduleListState.value = ModuleListState(
                                 error = result.message ?: "Unknown error"
                             )

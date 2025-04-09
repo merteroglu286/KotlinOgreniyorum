@@ -16,6 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.merteroglu286.kotlinogreniyorum.ui.theme.ActiveSegmentedIndicatorColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.InactiveSegmentedIndicatorColor
+import com.merteroglu286.kotlinogreniyorum.ui.theme.MEDIUM_PADDING
+import com.merteroglu286.kotlinogreniyorum.ui.theme.SMALL_HEIGHT
 import com.merteroglu286.kotlinogreniyorum.ui.theme.screenBackgroundColor
 
 @Composable
@@ -23,14 +25,14 @@ fun SegmentedIndicator(totalSteps: Int, currentStep: Int) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(MEDIUM_PADDING),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         for (i in 1..totalSteps) {
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .height(6.dp)
+                    .height(SMALL_HEIGHT)
                     .padding(horizontal = 2.dp)
                     .background(
                         color =

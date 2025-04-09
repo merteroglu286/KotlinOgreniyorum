@@ -14,8 +14,11 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.merteroglu286.kotlinogreniyorum.R
+import com.merteroglu286.kotlinogreniyorum.ui.theme.SMALL_PADDING
 import com.merteroglu286.kotlinogreniyorum.ui.theme.buttonColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.buttonTextColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.outlinedButtonColor
@@ -29,7 +32,7 @@ fun Buttons(
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        horizontalArrangement = Arrangement.spacedBy(SMALL_PADDING)
     ) {
         OutlinedButton(
             onClick = onResetClick,
@@ -56,7 +59,7 @@ fun Buttons(
             )
         )
         {
-            Text(if (isLastTopic) "Tamamla" else "Anladım")
+            Text(if (isLastTopic) stringResource(R.string.complete) else stringResource(R.string.next))
         }
     }
 }

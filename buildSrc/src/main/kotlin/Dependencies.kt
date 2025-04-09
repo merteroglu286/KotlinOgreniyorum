@@ -17,6 +17,11 @@ object Dependencies {
     const val INDICATOR = "mx.platacard:compose-pager-indicator:${DependenciesVersions.INDICATOR}"
     const val DATASTORE = "androidx.datastore:datastore-preferences:${DependenciesVersions.DATASTORE}"
     const val LOTTIE = "com.airbnb.android:lottie-compose:${DependenciesVersions.LOTTIE}"
+    const val KTOR_CLIENT_CORE = "io.ktor:ktor-client-core:${DependenciesVersions.KTOR}"
+    const val KTOR_CLIENT_ANDROID = "io.ktor:ktor-client-android:${DependenciesVersions.KTOR}"
+    const val KTOR_CLIENT_CONTENT_NEGOTIATION = "io.ktor:ktor-client-content-negotiation:${DependenciesVersions.KTOR}"
+    const val KTOR_SERIALIZATION_KOTLINX_JSON = "io.ktor:ktor-serialization-kotlinx-json:${DependenciesVersions.KTOR}"
+    const val KTOR_CLIENT_LOGGING = "io.ktor:ktor-client-logging:${DependenciesVersions.KTOR}"
 }
 
 

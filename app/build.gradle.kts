@@ -3,7 +3,7 @@ plugins {
     id(BuildPlugins.KOTLIN_ANDROID) version PluginVersions.KOTLIN
     id(BuildPlugins.COMPOSE_COMPILER) version PluginVersions.COMPOSE_COMPILER
     id(BuildPlugins.KOTLIN_KSP) version PluginVersions.KSP
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.1.10"
+    id(BuildPlugins.KTOR_SERIALIZATION) version PluginVersions.KTOR_SERIALIZATION
 }
 
 android {
@@ -87,12 +87,11 @@ dependencies {
 
     implementation(Dependencies.DATASTORE)
 
-    val ktorVersion = "3.1.1"
-    implementation("io.ktor:ktor-client-core:$ktorVersion")
-    implementation("io.ktor:ktor-client-android:$ktorVersion")
-    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-    implementation("io.ktor:ktor-client-logging:$ktorVersion")
-
     implementation(Dependencies.LOTTIE)
+
+    implementation(Dependencies.KTOR_CLIENT_CORE)
+    implementation(Dependencies.KTOR_CLIENT_ANDROID)
+    implementation(Dependencies.KTOR_CLIENT_CONTENT_NEGOTIATION)
+    implementation(Dependencies.KTOR_SERIALIZATION_KOTLINX_JSON)
+    implementation(Dependencies.KTOR_CLIENT_LOGGING)
 }

@@ -8,14 +8,24 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import com.merteroglu286.kotlinogreniyorum.R
 import com.merteroglu286.kotlinogreniyorum.domain.model.Topic
 import com.merteroglu286.kotlinogreniyorum.presentation.components.SegmentedIndicator
+import com.merteroglu286.kotlinogreniyorum.ui.theme.MEDIUM_HEIGHT
+import com.merteroglu286.kotlinogreniyorum.ui.theme.SMALL_HEIGHT
+import com.merteroglu286.kotlinogreniyorum.ui.theme.SMALL_PADDING
+import com.merteroglu286.kotlinogreniyorum.ui.theme.X_LARGE_HEIGHT
+import com.merteroglu286.kotlinogreniyorum.ui.theme.iconColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.primaryTextColor
 
 @Composable
@@ -26,6 +36,7 @@ fun TopicScreenContent(
     visibleContentCount: Int,
     showExamples: Boolean,
     isLastTopic: Boolean,
+    onBackClick: () -> Unit,
     onContentClick: () -> Unit,
     onResetClick: () -> Unit,
     onNextClick: () -> Unit
@@ -40,9 +51,22 @@ fun TopicScreenContent(
             ),
         verticalArrangement = Arrangement.Center
     ) {
+
+        Icon(
+            modifier = Modifier
+                .padding(SMALL_PADDING)
+                .clickable { onBackClick() },
+            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+            contentDescription = stringResource(R.string.back),
+            tint = MaterialTheme.colorScheme.iconColor,
+
+            )
+
+        Spacer(modifier = Modifier.height(SMALL_HEIGHT))
+
         SegmentedIndicator(totalSteps = totalSteps, currentStep = currentStep + 1)
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(X_LARGE_HEIGHT))
 
         Text(
             text = currentTopic.title,
@@ -50,7 +74,7 @@ fun TopicScreenContent(
             style = MaterialTheme.typography.titleLarge
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(MEDIUM_HEIGHT))
 
         Column(
             modifier = Modifier
@@ -64,8 +88,10 @@ fun TopicScreenContent(
             )
         }
 
-        if (visibleContentCount >= currentTopic.content.size && showExamples) {
-            Spacer(modifier = Modifier.height(16.dp))
+        if (visibleContentCount >= currentTopic.content.size && showExamples ||
+            (visibleContentCount >= currentTopic.content.size && currentTopic.examples.isEmpty())
+        ) {
+            Spacer(modifier = Modifier.height(MEDIUM_HEIGHT))
             Buttons(
                 isLastTopic = isLastTopic,
                 onResetClick = onResetClick,

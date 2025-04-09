@@ -27,6 +27,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -35,28 +36,59 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.merteroglu286.kotlinogreniyorum.R
 import com.merteroglu286.kotlinogreniyorum.domain.model.Module
 import com.merteroglu286.kotlinogreniyorum.ui.theme.DividerColor
+import com.merteroglu286.kotlinogreniyorum.ui.theme.LARGE_SIZE
 import com.merteroglu286.kotlinogreniyorum.ui.theme.MEDIUM_PADDING
+import com.merteroglu286.kotlinogreniyorum.ui.theme.SMALL_HEIGHT
+import com.merteroglu286.kotlinogreniyorum.ui.theme.SMALL_PADDING
 import com.merteroglu286.kotlinogreniyorum.ui.theme.cardBackgroundColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.descriptionColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.expandedCardBackgroundColor
+import com.merteroglu286.kotlinogreniyorum.ui.theme.secondTextColor
 import com.merteroglu286.kotlinogreniyorum.ui.theme.titleColor
 
 @Composable
 fun ExpandableCard(
     module: Module,
+    completedTopicList: List<Int>,
+    completedQuestionList: List<Int>,
     onContentClick: () -> Unit,
     onQuestionClick: () -> Unit,
-    isFirstCard: Boolean
+    isCardOpen: Boolean,
 ) {
-    var isExpanded by rememberSaveable { mutableStateOf(isFirstCard) }
+    var isExpanded by rememberSaveable { mutableStateOf(isCardOpen) }
     val rotationState by animateFloatAsState(
         targetValue = if (isExpanded) 180f else 0f
     )
+
+    val isTopicCompleted = completedTopicList.contains(module.id)
+    val textDecorationForTopic =
+        if (isTopicCompleted) TextDecoration.LineThrough else TextDecoration.None
+
+    val isQuestionCompleted = completedQuestionList.contains(module.id)
+    val textDecorationForQuestion =
+        if (isQuestionCompleted) TextDecoration.LineThrough else TextDecoration.None
+
+    var completedCount by rememberSaveable { mutableIntStateOf(0) }
+    var hasTopicBeenCompleted by rememberSaveable { mutableStateOf(false) }
+    var hasQuestionBeenCompleted by rememberSaveable { mutableStateOf(false) }
+
+    if (isTopicCompleted && !hasTopicBeenCompleted) {
+        completedCount++
+        hasTopicBeenCompleted = true
+    }
+
+    if (isQuestionCompleted && !hasQuestionBeenCompleted) {
+        completedCount++
+        hasQuestionBeenCompleted = true
+    }
+
 
     Card(
         modifier = Modifier
@@ -81,10 +113,18 @@ fun ExpandableCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
+                    modifier = Modifier.weight(1f),
                     text = module.title,
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.titleColor
+                    color = MaterialTheme.colorScheme.secondTextColor
+                )
+
+                Text(
+                    modifier = Modifier.padding(end = SMALL_PADDING),
+                    text = "$completedCount/2",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.secondTextColor
                 )
 
                 Icon(
@@ -120,11 +160,11 @@ fun ExpandableCard(
                     ) {
                         Icon(
                             imageVector = Icons.Outlined.Info,
-                            contentDescription = "Bilgi",
+                            contentDescription = stringResource(R.string.info),
                             tint = MaterialTheme.colorScheme.descriptionColor
                         )
 
-                        Spacer(modifier = Modifier.width(8.dp))
+                        Spacer(modifier = Modifier.width(SMALL_HEIGHT))
 
                         Text(
                             text = module.description,
@@ -152,25 +192,26 @@ fun ExpandableCard(
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
                             Icon(
-                                modifier = Modifier.size(24.dp),
+                                modifier = Modifier.size(LARGE_SIZE),
                                 painter = painterResource(R.drawable.ic_programming),
-                                contentDescription = "Bilgi",
+                                contentDescription = stringResource(R.string.info),
                                 tint = MaterialTheme.colorScheme.descriptionColor
                             )
 
-                            Spacer(modifier = Modifier.width(8.dp))
+                            Spacer(modifier = Modifier.width(SMALL_HEIGHT))
 
                             Text(
-                                text = "Öğrenmeye başla.",
+                                text = stringResource(R.string.start_learn),
                                 style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.descriptionColor
+                                color = MaterialTheme.colorScheme.descriptionColor,
+                                textDecoration = textDecorationForTopic
                             )
 
                             Spacer(modifier = Modifier.weight(1f))
 
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                                contentDescription = "Git",
+                                contentDescription = stringResource(R.string.go),
                                 tint = MaterialTheme.colorScheme.descriptionColor
                             )
                         }
@@ -195,32 +236,31 @@ fun ExpandableCard(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Icon(
-                                modifier = Modifier.size(24.dp),
+                                modifier = Modifier.size(LARGE_SIZE),
                                 painter = painterResource(R.drawable.ic_question),
-                                contentDescription = "Soru",
+                                contentDescription = stringResource(R.string.question),
                                 tint = MaterialTheme.colorScheme.descriptionColor
                             )
 
                             Spacer(modifier = Modifier.width(8.dp))
 
                             Text(
-                                text = "Soruları çöz.",
+                                text = stringResource(R.string.solve_questions),
                                 style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.descriptionColor
+                                color = MaterialTheme.colorScheme.descriptionColor,
+                                textDecoration = textDecorationForQuestion
                             )
 
                             Spacer(modifier = Modifier.weight(1f))
 
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                                contentDescription = "Git",
+                                contentDescription = stringResource(R.string.go),
                                 tint = MaterialTheme.colorScheme.descriptionColor
                             )
                         }
 
                     }
-
-
                 }
             }
         }

@@ -6,8 +6,8 @@ object Constants {
     const val TOPIC_DATABASE_TABLE = "topic_table"
     const val QUESTION_DATABASE_TABLE = "question_table"
 
-    const val APP_PREFERENCES = "app_preferences"
-    const val ON_BOARDING_PREFERENCES_KEY = "on_boarding_preferences_key"
+    const val TOPIC_ARGUMENT_KEY = "moduleId"
+    const val QUESTION_ARGUMENT_KEY = "moduleId"
 
-    const val BASE_URL = "http://192.168.1.101:8080/"
+    const val BASE_URL = "https://kotlin-ogreniyorum-server-a577a2d8a972.herokuapp.com/"
 }

@@ -18,6 +18,8 @@ val LARGE_HEIGHT = 24.dp
 val MEDIUM_HEIGHT = 16.dp
 val SMALL_HEIGHT = 8.dp
 
+val MEDIUM_RADIUS = 16.dp
+
 val LOTTIE_IMAGE_SIZE = 120.dp
 
 val BUTTON_HEIGHT = 48.dp

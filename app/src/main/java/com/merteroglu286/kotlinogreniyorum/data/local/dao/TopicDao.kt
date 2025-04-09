@@ -7,12 +7,12 @@ import com.merteroglu286.kotlinogreniyorum.domain.model.Topic
 
 @Dao
 interface TopicDao {
-    @Query("SELECT * FROM topic_table WHERE id=:moduleId")
-    fun getTopicByModuleId(moduleId: Int): List<Topic>
+    @Query("SELECT * FROM topic_table WHERE moduleId=:moduleId")
+    suspend fun getTopicByModuleId(moduleId: Int): List<Topic>
 
     @Insert()
     suspend fun addTopics(topics: List<Topic>)
 
-    @Query("DELETE FROM topic_table")
-    suspend fun deleteAllTopics()
+    @Query("DELETE FROM topic_table WHERE moduleId=:moduleId")
+    suspend fun deleteTopicsByModuleId(moduleId: Int)
 }
